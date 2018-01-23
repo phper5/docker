@@ -1,4 +1,7 @@
-FROM coder5/gcc
+FROM ubuntu:14.04
+ENV UPDATE_AT 20171205
+RUN apt-get update
+RUN sudo apt-get install -y build-essential
 RUN apt-get update --fix-missing
 RUN apt-get install -y wget
 RUN mkdir -p /source/php
