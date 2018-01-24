@@ -76,6 +76,7 @@ RUN /usr/local/php/7.1.11/bin/phpize
 RUN ./configure --with-php-config=/usr/local/php/7.1.11/bin/php-config
 RUN make && make install
 EXPOSE 9000
+EXPOSE 9001
 CMD ["/usr/local/php/7.1.11/sbin/php-fpm","-F"]
 
 

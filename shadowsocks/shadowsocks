@@ -1,0 +1,18 @@
+#!/bin/sh
+case $1 in
+        server)
+        if [ "$2"x = ""x ]; then
+            echo "ssserver -c /etc/shadowsocks/service.js"
+        else
+            echo "ssserver -c $2"
+        fi
+
+        ;;
+        client)
+        if [ "$2"x = ""x ]; then
+            echo "sslocal -c /etc/shadowsocks/007.js"
+        else
+            echo "sslocal -c $2"
+        fi
+        ;;
+esac
