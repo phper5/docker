@@ -1,0 +1,9 @@
+curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/coder5/php-fpm/trigger/108521e3-e486-4755-aca0-a34f6b1b8745/
+curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/coder5/rabbitmq/trigger/e58c3cdf-73a2-40ed-ab4e-02fdc8fb5c10/
+curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/coder5/shadowsocks/trigger/fa3541cd-bf63-474b-9b1f-9c28ea700daa/
+curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/coder5/nginx/trigger/fdd615c2-ad45-45e0-8e65-a6b1a1240451/
+curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/coder5/privoxy/trigger/ecd796d7-7328-440b-9025-f5225428dd45/
+curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/coder5/redis/trigger/1fea65fe-5e36-413a-9898-48816fa56a8a/
+
+
+

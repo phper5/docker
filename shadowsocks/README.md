@@ -8,16 +8,16 @@ docker build -t coder5/shadowsocks .
 
 ```
 作为客户端启动
-docker run -d -p 1080:1080 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks client
+docker run -d -p 1080:1080 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks coder5/shadowsocks  client
 或者
-docker run -d -p 1080:1080 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks client pathToConfig
+docker run -d -p 1080:1080 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks coder5/shadowsocks  client pathToConfig
 
 作为服务端启动
 docker run -d -p 8388:8388 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks
 或者
-docker run -d -p 8388:8388 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks server
+docker run -d -p 8388:8388 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks coder5/shadowsocks  server
 或者
-docker run -d -p 8388:8388 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks server pathToConfig
+docker run -d -p 8388:8388 --name=socks  -v /data/etc/shadowsocks/:/etc/shadowsocks coder5/shadowsocks  server pathToConfig
 
 ```
 默认使用的配置     
