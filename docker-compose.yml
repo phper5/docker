@@ -1,0 +1,85 @@
+version: '3'
+services:
+  socks:
+    image: "coder5/shadowsocks"
+    volumes:
+      - /data/etc/shadowsocks/:/etc/shadowsocks
+    ports:
+      - "1080:1080"
+    command: ['client']
+    networks:
+      - socks_proxy
+#     服务端
+#    ports:
+#     - "8388:8388"
+#   command: ['client']
+  proxy:
+    image: "coder5/privoxy"
+    ports:
+     - "1070:1070"
+    volumes:
+     - /data/etc/privoxy:/etc/privoxy
+    networks:
+      - socks_proxy
+    depends_on:
+      - socks 
+##网络配置结束
+  fpm:
+    image: "coder5/php-fpm"
+    volumes:
+      - /data/etc/php-fpm/:/usr/local/php/7.1.11/etc
+      - /data/etc/php/:/usr/local/etc/php
+      - /data/code/html/:/data/html
+      - /data/log/php/:/data/log/php/
+    networks:
+      - app
+    ports:
+      - 9001:9001
+  nginx:
+    image: "coder5/nginx"
+    volumes:
+      - /data/code/html:/data/html
+      - /data/etc/nginx/conf:/usr/local/nginx/conf
+      - /data/log/nginx:/data/log/nginx
+    command: /usr/local/nginx/sbin/nginx
+    depends_on:
+      - fpm
+    ports:
+      - 80:80
+    networks:
+      - app
+  redis:
+    image: "coder5/redis"
+    volumes:
+      - /data/etc/redis/:/etc/redis/
+      - /data/data/redis:/data/data/redis
+      - /data/log/redis:/data/log/redis
+    networks:
+          - app
+# 缺少rabbitmq log
+  rabbitmq:
+    image: "coder5/rabbitmq"
+    ports:
+         - "15672:15672"
+         - "5672:5672"
+    volumes:
+      - /data/data/rabbitmq/:/var/lib/rabbitmq/
+      - /data/etc/rabbitmq:/etc/rabbitmq
+    networks:
+          - app
+  mysql:
+    image: "mysql:5.7"
+    ports:
+        - "3306:3306"
+    volumes:
+        - /data/etc/mysql:/etc/mysql
+        - /data/data/mysql:/var/lib/mysql
+        - /data/log/mysql:/var/log/mysql
+    environment:
+          MYSQL_ROOT_PASSWORD: root
+    networks:
+        - app
+##网络配置结束
+networks:
+  socks_proxy:
+  app:

@@ -5,4 +5,5 @@ docker run --name rabbitmq -p 5672:5672 -p 15672:15672   -v /data/data/rabbitmq/
 ```
 以方便持久化的存储和自定义的配置，
 需要注意/data/data/rabbitmq/ 的读写权限
-参考 drwxr-xr-x   rabbitmq rabbitmq 
+参考 drwxr-xr-x   rabbitmq rabbitmq     
+docker里的rabbitmq的 uid和gid 都是1000 
