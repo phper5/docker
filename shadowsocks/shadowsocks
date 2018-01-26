@@ -2,7 +2,7 @@
 case $1 in
         server)
         if [ "$2"x = ""x ]; then
-            ssserver -c /etc/shadowsocks/service.js
+            ssserver -c /etc/shadowsocks/server.js
         else
             ssserver -c $2
         fi

@@ -29,7 +29,7 @@ services:
     volumes:
       - /data/etc/php-fpm/:/usr/local/php/7.1.11/etc
       - /data/etc/php/:/usr/local/etc/php
-      - /data/code/html/:/data/html
+      - /data/code/html/:/data/code/html
       - /data/log/php/:/data/log/php/
     networks:
       - app
@@ -38,7 +38,7 @@ services:
   nginx:
     image: "coder5/nginx"
     volumes:
-      - /data/code/html:/data/html
+      - /data/code/html:/data/code/html
       - /data/etc/nginx/conf:/usr/local/nginx/conf
       - /data/log/nginx:/data/log/nginx
     command: /usr/local/nginx/sbin/nginx
