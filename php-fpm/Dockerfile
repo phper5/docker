@@ -73,6 +73,11 @@ RUN ./configure --with-php-config=/usr/local/php/7.3.4/bin/php-config
 RUN make && make install
 
 WORKDIR /source/php/php-7.3.4/ext/gd
+RUN /usr/local/php/7.3.4/bin/phpize
+RUN ./configure --with-php-config=/usr/local/php/7.3.4/bin/php-config
+RUN make && make install
+
+
 RUN apt-get install libpng-dev
 
 #RUN apt-get -y install python graphviz
